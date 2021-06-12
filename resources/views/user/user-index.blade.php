@@ -61,11 +61,12 @@
                             <img src="{{ asset('img/images/default.png') }}" alt="user image" class="" width="30">
                         @endif</td>
                     <td>
-                        <a href="{{ route('user.edit',$row->id) }}"> <button type="button" class="btn btn-warning"><i class="far fa-edit"></i></button></a>
-                        <a><form action="{{route('user.destroy',$row->id)}}" method="post" class="d-inline">
+                        <a class="btn btn-info btn-sm" href="{{ route('user.edit',$row->id) }}"> <i class="fas fa-pencil-alt">
+                        </i>Edit</a>
+                        <form action="{{route('user.destroy',$row->id)}}" method="post" class="d-inline">
                             @method('DELETE')
                             @csrf
-                            <button type="submit" class="btn btn-danger"><i class="fas fa-trash-alt"></i></button></form></a>
+                            <button type="submit" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i>Hapus</button></form>
                     </td>
                 </tr>
                 @endforeach

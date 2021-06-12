@@ -21,6 +21,8 @@ class CreatePermohonanKtpTable extends Migration
             $table->string('status');
             $table->date('tanggal');
             $table->string('jenis_permohonan');
+            $table->string('kk');
+            $table->integer('warga_id');
         });
     }
 

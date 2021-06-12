@@ -18,11 +18,27 @@ Route::get('/', function () {
 });
 
 Route::get('/dashboard', 'DashboardController@index')->name('home')->middleware('auth');
+
+//Auth
 route::get('/register','AuthController@Register')->name('register');
 route::post('/register','AuthController@PostRegister')->name('postregister');
 Route::get('/login','AuthController@login')->name('login');
 Route::post('/login','AuthController@PostLogin')->name('postlogin');
 route::post('/logout','AuthController@logout')->name('logout');
+
+//Kelola User
 Route::resource('/user', 'UserController');
 
-//Route::get('/home', 'HomeController@index')->name('home');
+//Pelayanan KTP
+//Pengajuan KTP
+route::get('/pemula','PengajuanController@PengajuanKTPPemula')->name('formpemula');
+route::post('/pemula','PengajuanController@PostPengajuanKTPPemula')->name('postpemula');
+//end Pelayanan KTP
+
+
+//Kegiatan
+Route::resource('/kegiatan', 'KegiatanController');
+Route::get('/approve{id}', 'KegiatanController@approve')->name('kapprove');
+Route::post('/approve{id}', 'KegiatanController@updateapprove')->name('updateapprove');
+Route::get('/posting', 'KegiatanController@posting')->name('postingkegiatan')->middleware('auth');
+//end Kegiatan

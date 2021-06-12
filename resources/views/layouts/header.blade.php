@@ -11,9 +11,9 @@
           <ul class="nav navbar-nav">
             <!-- User Account: style can be found in dropdown.less -->
             <li class="dropdown user user-menu">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                <span class="hidden-xs"> {{Auth::User()->name}}</span>
-                <i class="fa fa-gear"></i>
+              <a href="#" data-toggle="dropdown">
+                <span class="hidden-xs">Selamat Datang {{Auth::User()->name}}</span>
+                <i class="fas fa-cog"></i>
               </a>
               <ul class="dropdown-menu">
                 <!-- User image -->
@@ -30,11 +30,10 @@
                 </li>
                 <!-- Menu Body -->
                 <li class="user-body">
-                  <div class="pull-left">
-                  </div>
-                  <div class="pull-right">
+
+                  <div class="float-sm-right">
                     <a href="{{ route('logout') }}" onclick="event.preventDefault();
-                    document.getElementById('logout-form').submit();" class="btn btn-default btn-flat">Sign out</a>
+                    document.getElementById('logout-form').submit();" class="btn btn-default btn-flat"><i class="fas fa-power-off"></i> Sign out</a>
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                       @csrf
                   </form>

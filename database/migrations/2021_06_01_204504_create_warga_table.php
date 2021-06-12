@@ -16,8 +16,8 @@ class CreateWargaTable extends Migration
         Schema::create('warga', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->string('nik');
-            $table->string('no_kk');
+            $table->string('nik')->unique();
+            $table->string('no_kk')->unique();
             $table->string('nama');
             $table->date('tanggal_lahir');
             $table->string('jenis_kelamin');
@@ -28,13 +28,13 @@ class CreateWargaTable extends Migration
             $table->string('status_perkawinan');
             $table->string('pendidikan');
             $table->string('id_pekerjaan');
-            $table->string('status');
-            $table->string('gol_darah');
+            $table->string('status')->nullable();
+            $table->string('gol_darah')->nullable();
             $table->string('kewarganegaraan');
             $table->string('foto');
+            $table->string('berlaku')->nullable();
         });
     }
-
     /**
      * Reverse the migrations.
      *
