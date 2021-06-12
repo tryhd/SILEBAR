@@ -31,8 +31,8 @@ Route::resource('/user', 'UserController');
 
 //Pelayanan KTP
 //Pengajuan KTP
-route::get('/pemula','PengajuanController@PengajuanKTPPemula')->name('formpemula');
-route::post('/pemula','PengajuanController@PostPengajuanKTPPemula')->name('postpemula');
+route::get('/pemula','PelayananController@PengajuanKTPPemula')->name('formpemula');
+route::post('/pemula','PelayananController@PostPengajuanKTPPemula')->name('postpemula');
 //end Pelayanan KTP
 
 

@@ -37,53 +37,54 @@
                             <div class="form-group col-md-12">
                                 <label>NIK</label>
                                 <input type="text" id="inputName" class="form-control"
-                                    placeholder="Nomor Induk Kependudukan">
+                                    placeholder="Nomor Induk Kependudukan" name="nik">
                             </div>
                             <div class="form-group col-md-12">
                                 <label for="inputName">No Kartu Keluarga</label>
                                 <input type="text" id="inputName" class="form-control"
-                                    placeholder="Nomor Kartu Keluarga">
+                                    placeholder="Nomor Kartu Keluarga" name="no_kk">
                             </div>
                             <div class="form-group col-md-12">
                                 <label for="inputName">Nama Lengkap</label>
                                 <input type="text" id="inputName" class="form-control"
-                                    placeholder="Nama lengkap sesuai akta kelahiran">
+                                    placeholder="Nama lengkap sesuai akta kelahiran" name="nama">
                             </div>
                             <div class="form-group col-md-4">
                                 <label for="inputName">Tempat Lahir</label>
                                 <input type="text" id="inputName" class="form-control"
-                                    placeholder="Tempat Lahir">
+                                    placeholder="Tempat Lahir" name="tempat_lahir">
                             </div>
                             <div class="form-group col-md-4">
                                 <label for="inputName">Tanggal Lahir</label>
                                 <input type="date" id="inputName" class="form-control"
-                                    placeholder="Nama lengkap sesuai akta kelahiran">
+                                    placeholder="Nama lengkap sesuai akta kelahiran" name="tanggal_lahir">
                             </div>
                             <div class="form-group col-md-4">
                                 <label for="inputName">Jenis Kelamin</label>
-                                <select id="inputStatus" class="form-control custom-select">
+                                <select name="jenis_kelamin" id="inputStatus" class="form-control custom-select">
                                     <option selected disabled>- Pilih -</option>
-                                    <option>LAKI-LAKI</option>
-                                    <option>PEREMPUAN</option>
+                                    <option name="jenis_kelamin" value="LAKI-LAKI">Laki-Laki</option>
+                                    <option name="jenis_kelamin" value="PEREMPUAN">Perempuan</option>
                                 </select>
                             </div>
                             <div class="form-group col-md-12">
                                 <label for="inputName">Alamat Lengkap</label>
                                 <textarea type="text" id="inputName" class="form-control"
-                                    placeholder="Alamat" rows="2"></textarea>
+                                    placeholder="Alamat" rows="2" name="alamat"></textarea>
                             </div>
                             <div class="form-group col-md-4">
                                 <label for="inputName">RT</label>
-                                <input type="text" id="inputName" class="form-control">
+                                <input type="number" id="inputName" class="form-control" name="RT">
                             </div>
                             <div class="form-group col-md-4">
                                 <label for="inputName">RW</label>
-                                <input type="text" id="inputName" class="form-control">
+                                <input type="number" id="inputName" class="form-control" name="RW">
                             </div>
                             <div class="form-group col-md-4">
                                 <label for="inputName">Kelurahan</label>
-                                <select id="inputStatus" class="form-control custom-select">
-                                <option selected disabled>- Pilih -</option>
+                                <select id="inputStatus" name="kelurahan" class="form-control custom-select">
+                                <option name="kelurahan" selected disabled>- Pilih -</option>
+                                <option name="kelurahan" value=""></option>
                                 </select>
                             </div>
                             <div class="form-group col-md-12">
@@ -93,28 +94,55 @@
                             </div>
                             <div class="form-group col-md-12">
                                 <label for="inputName">Pendidikan</label>
-                                <input type="text" id="inputName" class="form-control"
-                                    placeholder="Nama lengkap sesuai akta kelahiran">
+                                <select name="pendidikan" id="" class="form-control custom-select">
+                                    <option selected disabled>- Pilih -</option>
+                                    <option name="pendidikan" value="TAMAT SD / SEDERAJAT">TAMAT SD / SEDERAJAT</option>
+                                    <option name="pendidikan" value="">SLTP SEDERAJAT</option>
+                                    <option name="pendidikan" value="STLP/SEDERAJAT">STLP/SEDERAJAT</option>
+                                    <option name="pendidikan" value="TIDAK / BELUM SEKOLAH">TIDAK / BELUM SEKOLAH</option>
+                                    <option name="pendidikan" value="SLTA/SEDERAJAT">SLTA/SEDERAJAT</option>
+                                    <option name="pendidikan" value="BELUM TAMAT SD/SEDERAJAT">BELUM TAMAT SD/SEDERAJAT</option>
+                                    <option name="pendidikan" value="DIPLOMA IV / STARTA 1">DIPLOMA IV / STARTA 1</option>
+                                    <option name="pendidikan" value="AKADEMI/DIPLOMA III/S.MUDA">AKADEMI/DIPLOMA III/S.MUDA</option>
+                                    <option name="pendidikan" value="DIPLOMA I/II">DIPLOMA I/II</option>
+                                    <option name="pendidikan" value="STRATA II">STRATA II</option>
+                                    <option name="pendidikan" value="STARTA III">STARTA III</option>
+                                </select>
                             </div>
                             <div class="form-group col-md-12">
                                 <label for="inputName">Pekerjaan</label>
-                                <input type="text" id="inputName" class="form-control"
-                                    placeholder="Nama lengkap sesuai akta kelahiran">
+                                <select name="pekerjaan" id="" class="form-control custom-select">
+                                    <option selected disabled>- Pilih -</option>
+                                    <option name="pekerjaan" value=""></option>
+                                </select>
                             </div>
                             <div class="form-group col-md-12">
                                 <label for="inputName">Status Perkawinan</label>
-                                <input type="text" id="inputName" class="form-control"
-                                    placeholder="Nama lengkap sesuai akta kelahiran">
+                                <select name="status_perkawinan" id="" class="form-control custom-select">
+                                    <option selected disabled>- Pilih -</option>
+                                    <option name="status_perkawinan" value="BELUM KAWIN">Belum Kawin</option>
+                                    <option name="status_perkawinan" value="KAWIN">Kawin</option>
+                                    <option name="status_perkawinan" value="CERAI HIDUP">Cerai Hidup</option>
+                                    <option name="status_perkawinan" value="CERAI MATI">Cerai Mati</option>
+                                </select>
                             </div>
                             <div class="form-group col-md-12">
                                 <label for="inputName">Golongan Darah</label>
-                                <input type="text" id="inputName" class="form-control"
-                                    placeholder="Nama lengkap sesuai akta kelahiran">
+                                <select name="gol_darah" id="" class="form-control custom-select">
+                                    <option selected disabled>- Pilih -</option>
+                                    <option name="gol_darah" value="A">A</option>
+                                    <option name="gol_darah" value="B">B</option>
+                                    <option name="gol_darah" value="AB">AB</option>
+                                    <option name="gol_darah" value="O">O</option>
+                                </select>
                             </div>
                             <div class="form-group col-md-12">
                                 <label for="inputName">Kewarganegaraan</label>
-                                <input type="text" id="inputName" class="form-control"
-                                    placeholder="Nama lengkap sesuai akta kelahiran">
+                                <select name="kewarganegaraan" id="" class="form-control custom-select">
+                                    <option selected disabled>- Pilih -</option>
+                                    <option name="kewarganegaraan" value="WNI">Warga Negara Indonesia</option>
+                                    <option name="kewarganegaraan" value="WNA">Warga Negara Asing</option>
+                                </select>
                             </div>
                         </div>
                     </div>
@@ -134,16 +162,28 @@
                 </div>
                 <div class="card-body">
                     <div class="form-group">
-                        <label for="inputEstimatedBudget">Estimated budget</label>
-                        <input type="number" id="inputEstimatedBudget" class="form-control">
+                        <label for="inputEstimatedBudget">Surat Pengantar</label>
+                        <div class="input-group">
+                            <div class="custom-file">
+                                <input type="file" class="custom-file-input" id="exampleInputFile" name="surat_pengantar" value="{{ old('foto') }}">
+                                <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+                            </div>
+                            <div class="input-group-append">
+                                <span class="input-group-text">Upload</span>
+                            </div>
+                        </div>
                     </div>
                     <div class="form-group">
-                        <label for="inputSpentBudget">Total amount spent</label>
-                        <input type="number" id="inputSpentBudget" class="form-control">
-                    </div>
-                    <div class="form-group">
-                        <label for="inputEstimatedDuration">Estimated project duration</label>
-                        <input type="number" id="inputEstimatedDuration" class="form-control">
+                        <label for="inputSpentBudget">Kartu Keluarga</label>
+                        <div class="input-group">
+                            <div class="custom-file">
+                                <input type="file" class="custom-file-input" id="exampleInputFile" name="kk" value="{{ old('foto') }}">
+                                <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+                            </div>
+                            <div class="input-group-append">
+                                <span class="input-group-text">Upload</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <!-- /.card-body -->

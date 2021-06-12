@@ -53,13 +53,11 @@ class KegiatanController extends Controller
             'judul'=>'required',
             'foto'=>'sometimes|image|mimes:jpg,jpeg,png',
             'deskripsi'=>'required',
-            'status' => 'required',
        ];
         $message=[
             'tanggal.required' => ':attribute tidak boleh kosong!',
             'judul.required' => ':attribute tidak boleh kosong!',
             'deskripsi.required' => ':attribute tidak boleh kosong!',
-            'status.required' => ':attribute tidak boleh kosong!',
             'foto_user.image' => ':attribute tidak boleh selain file gambar!',
             'foto_user.mimes' => ':attribute tidak boleh selain *.jpg, *.jpeg , *.png!',
         ];
@@ -74,7 +72,7 @@ class KegiatanController extends Controller
        $data->judul=$request->judul;
        $data->user_id=Auth()->user()->id;
        $data->deskripsi=$request->deskripsi;
-       $data->status=$request->status;
+       $data->status='Tinjau';
        $data->foto = $nama_foto;
        //dd($request->all());
        $data->save();
@@ -196,7 +194,9 @@ class KegiatanController extends Controller
     public function Posting()
     {
         $user = User::all();
-        $data=Kegiatan::where('status','Posting')->get();
+        $data=Kegiatan::where('status','Posting')
+        ->orderby('id','desc')
+        ->get();
         //dd($data);
         return view ('kegiatan.kegiatan-posting',compact('data','user'));
     }

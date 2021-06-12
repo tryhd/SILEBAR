@@ -19,15 +19,17 @@ class CreateWargaTable extends Migration
             $table->string('nik')->unique();
             $table->string('no_kk')->unique();
             $table->string('nama');
+            $table->string('tempat_lahir');
             $table->date('tanggal_lahir');
             $table->string('jenis_kelamin');
             $table->string('alamat');
+            $table->integer('kelurahan');
             $table->string('rt',5);
             $table->string('rw',5);
             $table->string('agama');
             $table->string('status_perkawinan');
             $table->string('pendidikan');
-            $table->string('id_pekerjaan');
+            $table->integer('id_pekerjaan');
             $table->string('status')->nullable();
             $table->string('gol_darah')->nullable();
             $table->string('kewarganegaraan');
