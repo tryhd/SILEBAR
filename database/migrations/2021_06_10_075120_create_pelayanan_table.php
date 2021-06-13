@@ -17,7 +17,7 @@ class CreatePelayananTable extends Migration
             $table->id();
             $table->timestamps();
             $table->integer('user_id');
-            $table->string('surat_pengantar');
+            $table->string('surat_pengantar')->nullable();
             $table->string('surat_kehilangan')->nullable();
             $table->string('status');
             $table->date('tanggal');

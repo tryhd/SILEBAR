@@ -33,7 +33,7 @@ class CreateWargaTable extends Migration
             $table->string('status')->nullable();
             $table->string('gol_darah')->nullable();
             $table->string('kewarganegaraan');
-            $table->string('foto');
+            $table->string('foto_ktp')->nullable();
             $table->string('berlaku')->nullable();
         });
     }
