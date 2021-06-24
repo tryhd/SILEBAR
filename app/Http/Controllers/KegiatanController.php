@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use App\Kelurahan;
 use App\Kegiatan;
 use Session;
 use File;
@@ -20,7 +21,9 @@ class KegiatanController extends Controller
     {
         //
         $user = User::all();
-        $data=Kegiatan::all();
+        $data=Kegiatan::orderby('status','desc')
+                        ->orderby('id','asc')
+                        ->get();
 
         return view ('kegiatan.kegiatan-index',compact('data','user'));
     }
@@ -149,7 +152,7 @@ class KegiatanController extends Controller
                 @unlink($path_old);
             }
             $data->delete();
-            Session::flash('message', 'Data'. $data->judul .'Berhasil dihapus');
+            Session::flash('message', 'Data ' . $data->judul . ' Berhasil dihapus');
             Session::flash('type', 'success');
             return redirect()->route('kegiatan.index');
     }
@@ -180,24 +183,45 @@ class KegiatanController extends Controller
         return view ('kegiatan.kegiatan-approve',compact('data','user'));
     }
 
+    public function Konfirmasi($id){
+        $data=Kegiatan::find($id);
+        $data->status='Posting';
+        $data->update();
+        Session::flash('message', 'Kegiatan '. $data->judul .' berhasil diposting!');
+        Session::flash('type', 'success');
+        return redirect()->route('kegiatan.index');
+    }
+
     public function updateapprove(Request $request, $id)
     {
         $data=Kegiatan::find($id);
         $data->status=$request->status;
         //dd($request->all());
         $data->save();
-        Session::flash('message', 'Data '. $data->judul .' berhasil diUpdate!');
+        Session::flash('message', 'Data '. $data->judul .' berhasil diupdate!');
         Session::flash('type', 'success');
         return redirect()->route('kegiatan.index');
     }
 
     public function Posting()
     {
+        $kelurahan = Kelurahan::all();
         $user = User::all();
         $data=Kegiatan::where('status','Posting')
         ->orderby('id','desc')
         ->get();
         //dd($data);
-        return view ('kegiatan.kegiatan-posting',compact('data','user'));
+        return view ('kegiatan.kegiatan-posting',compact('data','user','kelurahan'));
+    }
+
+    public function PostingPelayanan()
+    {
+        $kelurahan = Kelurahan::all();
+        $user = User::all();
+        $data=Kegiatan::where('status','Posting')
+        ->orderby('id','desc')
+        ->get();
+        //dd($data);
+        return view ('kegiatan.pelayanan-posting',compact('data','user','kelurahan'));
     }
 }

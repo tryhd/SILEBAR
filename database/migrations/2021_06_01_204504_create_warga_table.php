@@ -17,7 +17,7 @@ class CreateWargaTable extends Migration
             $table->id();
             $table->timestamps();
             $table->string('nik')->unique();
-            $table->string('no_kk')->unique();
+            $table->string('no_kk');
             $table->string('nama');
             $table->string('tempat_lahir');
             $table->date('tanggal_lahir');

@@ -118,7 +118,7 @@ class UserController extends Controller
         $rules = [
             'name' =>'required',
             'email'=>'required|email',
-            'password'=>'required|min:6',
+            //'password'=>'required|min:6',
             'role'=>'required',
             'foto_user'=>'sometimes|image|mimes:jpg,jpeg,png',
             'status'=>'required',
@@ -128,8 +128,8 @@ class UserController extends Controller
             'email.required' => ':attribute tidak boleh kosong!',
             'email.unique'=>':attribute sudah terdaftar!',
             'email.email'=>'format :attribute tidak sesuai!',
-            'password.required' => ':attribute tidak boleh kosong!',
-            'password.min'=>':attribute tidak boleh kurang dari 6 karakter!',
+            //'password.required' => ':attribute tidak boleh kosong!',
+            //'password.min'=>':attribute tidak boleh kurang dari 6 karakter!',
             'role.required'=>':attribute tidak boleh kosong!',
             'foto_user.image' => ':attribute tidak boleh selain file gambar!',
             'foto_user.mimes' => ':attribute tidak boleh selain *.jpg, *.jpeg , *.png!',
@@ -145,7 +145,7 @@ class UserController extends Controller
         $data->email=$request->email;
         $data->role=$request->role;
         $data->status=$request->status;
-        $data->password=$request->password;
+        //$data->password=$request->password;
         $data->foto_user=$foto_nama;
         $data->save();
         Session::flash('message', 'Data '. $data->name .' berhasil diubah!');

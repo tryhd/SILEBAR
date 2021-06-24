@@ -1,7 +1,14 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Warga;
+use App\Pelayanan;
+use App\Kegiatan;
+use App\Kelurahan;
+use App\Pekerjaan;
+use App\User;
+use PDF;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
 class LaporanController extends Controller
@@ -11,9 +18,32 @@ class LaporanController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        $data = Kegiatan::all();
+        $mulai=$request->mulai;
+        $akhir=$request->akhir;
+        $status=$request->status;
+        $search=Kegiatan::query()
+        ->Where('status',$status)
+        ->whereBetween('created_at',[$mulai,$akhir])
+        ->get();
+        // dd($search);
+        return view ('laporan.laporan-kegiatan-index',compact('data','search'));
+    }
+
+    public function pelayananindex(Request $request)
+    {
+        $user = User::all();
+        $data = Pelayanan::all();
+        $mulai=$request->mulai;
+        $akhir=$request->akhir;
+        $jenis=$request->jenis;
+        $status=$request->status;
+        $search=Pelayanan::whereBetween('created_at',[$mulai,$akhir])
+        ->where('jenis_permohonan','like',"%$jenis%")
+        ->Where('status',$status)->get();
+        return view ('laporan.laporan-pelayanan-index',compact('data','search'));
     }
 
     /**
@@ -21,6 +51,7 @@ class LaporanController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
     public function create()
     {
         //
@@ -57,6 +88,7 @@ class LaporanController extends Controller
     public function edit($id)
     {
         //
+
     }
 
     /**
@@ -80,5 +112,33 @@ class LaporanController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function kegiatanpdf(Request $request)
+    {
+        $mulai=$request->mulai;
+        $akhir=$request->akhir;
+        $search=Kegiatan::with('user')
+        ->Where('status',$status)
+        ->whereBetween('created_at',[$mulai,$akhir])
+        ->get();
+        // dd($search);
+        $pdf = PDF::loadView('pdf.kegiatan-pdf',compact('search','mulai','akhir'));
+        return $pdf->download('Laporan-Kegiatan.pdf');
+    }
+
+    public function Pelayananpdf(Request $request)
+    {
+        $mulai=$request->mulai;
+        $akhir=$request->akhir;
+        $jenis=$request->jenis;
+        $status=$request->status;
+        $search=Pelayanan::with('user','warga')
+        ->whereBetween('created_at',[$mulai,$akhir])
+        ->where('jenis_permohonan','like',"%$jenis%")
+        ->Where('status',$status)->get();
+        // dd($search);
+        $pdf = PDF::loadView('pdf.pelayanan-pdf',compact('search','mulai','akhir','jenis'));
+        return $pdf->download('Laporan-Pelayanan.pdf');
     }
 }

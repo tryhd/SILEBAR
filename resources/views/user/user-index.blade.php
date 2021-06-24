@@ -28,20 +28,22 @@
         <div class="card-header">
           <h3 class="card-title">Data User</h3>
         </div>
+        @include('layouts.alerts')
         <div class="card-body">
             <td>
                 <a href="{{ route('user.create') }}"  type="button" class="btn btn-primary">Tambah User  <i class="fas fa-plus"></i></button></a>
             </td>
+
             <table id="example1" class="table table-bordered table-striped">
                 <thead>
                 <tr>
                     <th>No</th>
-                  <th>Nama</th>
-                  <th>Email</th>
-                  <th>Role</th>
-                  <th>Status</th>
-                  <th>Foto</th>
-                  <th>Aksi</th>
+                    <th>Nama</th>
+                    <th>Email</th>
+                    <th>Role</th>
+                    <th>Status</th>
+                    <th>Foto</th>
+                    <th>Aksi</th>
                 </tr>
                 </thead>
                 <tbody>

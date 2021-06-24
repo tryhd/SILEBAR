@@ -4,10 +4,10 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Pelayanan extends Model
+class DetailKK extends Model
 {
     //
-    protected $table='pelayanan';
+    protected $table='detailkk';
 
     public function user(){
         return $this->belongsTo('App\user','user_id');
@@ -15,6 +15,6 @@ class Pelayanan extends Model
       }
 
     public function warga(){
-        return $this->belongsTo('App\warga','warga_id');
+        return $this->belongsTo('App\user','warga_id');
     }
 }

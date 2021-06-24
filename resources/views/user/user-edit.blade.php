@@ -72,13 +72,6 @@
                                     @endif
                                 </div>
                                 <div class="form-group col-md-6">
-                                    <label for="exampleInputPassword1">Password</label>
-                                    <input type="password" class="form-control" id="exampleInputPassword1"placeholder="Password" name="password" value="{{ $data->password }}">
-                                    @if ($errors->has('password'))
-                                        <span class="text-danger">{{ $errors->first('password') }}</span>
-                                    @endif
-                                </div>
-                                <div class="form-group col-md-6">
                                     <label for="exampleInputFile">Foto User</label>
                                     <div class="input-group">
                                         <div class="custom-file">

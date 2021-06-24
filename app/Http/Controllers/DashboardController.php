@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\pelayanan;
+use App\Kegiatan;
+use Illuminate\Support\Facades\DB;
 class DashboardController extends Controller
 {
     /**
@@ -14,7 +16,13 @@ class DashboardController extends Controller
     public function index()
     {
         //
-        return view('dashboard');
+        $PD = Pelayanan::where('status','Diproses')->count();
+        $PS = Pelayanan::where('status','Selesai')->count();
+        $KT = Kegiatan::where('status','Tinjau')->count();
+        $KP = Kegiatan::where('status','Posting')->count();
+        $userid=Auth()->user()->id;
+        $pelayanan=DB::Select("SELECT *FROM pelayanan where user_id=$userid");
+        return view('dashboard',compact('pelayanan','PD','PS','KT','KP'));
     }
 
     /**

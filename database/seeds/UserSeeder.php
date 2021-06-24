@@ -34,11 +34,11 @@ class UserSeeder extends Seeder
             'role'=>'Kecamatan',
         ]);
         DB::table('users')->insert([
-            'name' => 'NonAktif Test',
-            'email' => 'nonaktif@test.com',
+            'name' => 'Camat Test',
+            'email' => 'camat@test.com',
             'password' => Hash::make('12345678'),
             'status'=>'NonAktif',
-            'role'=>'Kecamatan',
+            'role'=>'Camat',
         ]);
     }
 }

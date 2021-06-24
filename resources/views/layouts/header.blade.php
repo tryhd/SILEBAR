@@ -19,7 +19,7 @@
                 <!-- User image -->
                 <li class="user-header">
                     @if (Auth::user()->foto_user !=null)
-                    <img src="{{ asset('images/'.auth()->user()->foto)}}" class="img-circle" alt="User Image">
+                    <img src="{{ asset('img/images/'.auth()->user()->foto_user)}}" class="img-circle" alt="User Image">
                     @else
                     <img src="/dist/img/avatar5.png" class="img-circle" alt="User Image">
                     @endif
