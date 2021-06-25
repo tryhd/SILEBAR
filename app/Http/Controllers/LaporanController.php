@@ -118,6 +118,7 @@ class LaporanController extends Controller
     {
         $mulai=$request->mulai;
         $akhir=$request->akhir;
+        $status=$request->status;
         $search=Kegiatan::with('user')
         ->Where('status',$status)
         ->whereBetween('created_at',[$mulai,$akhir])
