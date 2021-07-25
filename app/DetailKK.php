@@ -15,6 +15,6 @@ class DetailKK extends Model
       }
 
     public function warga(){
-        return $this->belongsTo('App\user','warga_id');
+        return $this->belongsTo('App\warga','warga_id');
     }
 }

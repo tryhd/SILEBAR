@@ -57,7 +57,7 @@
                     @if (Auth::user()->role == 'Kecamatan')
                         {{-- <a href="{{ route('pelayanan.show',$row->id) }}"  type="button" class="btn btn-primary">Detail Pengajuan</button></a> --}}
                         @if($row->status == null OR $row->status == 'Diproses')
-                        <a href="{{ route('pelayanan-konfirmasi',$row->id) }}"  type="button" class="btn btn-primary">Konfirmasi</a>
+                        <a href="{{ route('pelayanan.show',$row->id) }}"  type="button" class="btn btn-primary">Konfirmasi</a>
                         @else
                        <button class="btn btn-primary" disabled>Konfirmasi</button></a>
                         @endif

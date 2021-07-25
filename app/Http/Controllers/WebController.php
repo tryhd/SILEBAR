@@ -13,7 +13,7 @@ class WebController extends Controller
         $kelurahan = Kelurahan::all();
         $user = User::all();
         $data=Kegiatan::where('status','Posting')
-        ->orderby('id','desc')
+        ->orderby('updated_at','desc')
         ->get();
         return view ('web.index',compact('user','data','kelurahan'));
     }
@@ -22,7 +22,7 @@ class WebController extends Controller
         $kelurahan = Kelurahan::all();
         $user = User::all();
         $data=Kegiatan::where('status','Posting')
-        ->orderby('id','desc')
+        ->orderby('updated_at','desc')
         ->get();
         //dd($data);
         return view ('web.kegiatan',compact('data','user','kelurahan'));
@@ -32,7 +32,7 @@ class WebController extends Controller
         $kelurahan = Kelurahan::all();
         $user = User::all();
         $data=Kegiatan::where('status','Posting')
-        ->orderby('id','desc')
+        ->orderby('updated_at','desc')
         ->get();
         //dd($data);
         return view ('web.pelayanan',compact('data','user','kelurahan'));

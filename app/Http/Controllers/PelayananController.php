@@ -62,7 +62,9 @@ class PelayananController extends Controller
     {
         //
         $data=Pelayanan::find($id);
-        return view ('pelayanan.pelayanan-detail',compact('data'));
+        $istri=detailkk::where('no_kk',$data->Warga->no_kk)->where('status','Istri')->get();
+        $suami=detailkk::where('no_kk',$data->Warga->no_kk)->where('status','Kepala Keluarga')->get();
+        return view ('pelayanan.pelayanan-detail',compact('data','istri','suami'));
     }
 
     /**
@@ -73,6 +75,7 @@ class PelayananController extends Controller
      */
     public function edit($id)
     {
+
         $data=Pelayanan::find($id);
         return view ('pelayanan.pelayanan-konfirmasi');
     }
@@ -110,7 +113,7 @@ class PelayananController extends Controller
     }
 
     public function PengajuanKTPPemula(){
-        $users=User::all();
+        $user=User::all();
         $kelurahans=Kelurahan::all();
         $data=Pelayanan::all();
         $kerjas=Pekerjaan::all();
@@ -483,7 +486,7 @@ class PelayananController extends Controller
             if ($request->hasFile('kk')){
                 $kk_nama=$this->uploadKK($request,$kk_nama);
             }
-            if ($request->hasFile('ktp')){
+            if ($request->hasFile('surat_kehilangan')){
                 $kehilangan_nama=$this->uploadSuratHilang($request,$kehilangan_nama);
             }
             if ($request->hasFile('surat_pengantar')){
@@ -695,9 +698,9 @@ class PelayananController extends Controller
 
     private function uploadSuratHilang(Request $request, $file_old)
     {
-        $surat = $request->file('surat_hilang');
+        $surat = $request->file('surat_kehilangan');
         $ext = $surat->getClientOriginalExtension();
-        if ($request->file('surat_hilang')->isValid()) {
+        if ($request->file('surat_kehilangan')->isValid()) {
             $foto_nama   = 'SH'.date('Ymdhis') . "." . $ext;
             $image_resize = Image::make($surat->getRealPath());
             $image_resize->resize(300, 300);
@@ -919,7 +922,7 @@ class PelayananController extends Controller
             $data->user_id=Auth()->user()->id;
             $data->warga_id=$suami->id;
             $data->status="Diproses";
-            $data->tanggal=$etailSuami->created_at;
+            $data->tanggal=$detailSuami->updated_at;
             $data->jenis_permohonan="Pembuatan KK";
             $data->surat_pengantar=$surat;
             $data->akta_nikah=$akta;

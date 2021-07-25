@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
 use Illuminate\Support\Facades\Hash;
+use App\Mail\SendMail;
+use Illuminate\Support\Facades\Mail;
 class AuthController extends Controller
 {
     /**
@@ -115,6 +117,14 @@ class AuthController extends Controller
             'status'=>'Aktif',
             'foto_user'=>null
         ]);
+
+        $nama = $request->name;
+        $email = $request->email;
+        $kirim = Mail::to($email)->send(new SendMail($nama));
+
+        if($kirim){
+            echo "Email telah dikirim";
+        }
         return redirect()->route('login');
     }
 

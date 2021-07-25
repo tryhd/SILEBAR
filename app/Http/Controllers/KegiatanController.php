@@ -93,6 +93,8 @@ class KegiatanController extends Controller
     public function show($id)
     {
         //
+        $data= Kegiatan::find($id);
+        return view ('kegiatan.kegiatan-detail',compact('data'));
     }
 
     /**
@@ -174,15 +176,6 @@ class KegiatanController extends Controller
         }
         return $foto_old;
     }
-
-
-    public function approve($id)
-    {
-        $user = user::all();
-        $data= Kegiatan::find($id);
-        return view ('kegiatan.kegiatan-approve',compact('data','user'));
-    }
-
     public function Konfirmasi($id){
         $data=Kegiatan::find($id);
         $data->status='Posting';
@@ -192,23 +185,12 @@ class KegiatanController extends Controller
         return redirect()->route('kegiatan.index');
     }
 
-    public function updateapprove(Request $request, $id)
-    {
-        $data=Kegiatan::find($id);
-        $data->status=$request->status;
-        //dd($request->all());
-        $data->save();
-        Session::flash('message', 'Data '. $data->judul .' berhasil diupdate!');
-        Session::flash('type', 'success');
-        return redirect()->route('kegiatan.index');
-    }
-
     public function Posting()
     {
         $kelurahan = Kelurahan::all();
         $user = User::all();
         $data=Kegiatan::where('status','Posting')
-        ->orderby('id','desc')
+        ->orderby('updated_at','desc')
         ->get();
         //dd($data);
         return view ('kegiatan.kegiatan-posting',compact('data','user','kelurahan'));
@@ -219,7 +201,7 @@ class KegiatanController extends Controller
         $kelurahan = Kelurahan::all();
         $user = User::all();
         $data=Kegiatan::where('status','Posting')
-        ->orderby('id','desc')
+        ->orderby('kegiatan.updated_at','desc')
         ->get();
         //dd($data);
         return view ('kegiatan.pelayanan-posting',compact('data','user','kelurahan'));

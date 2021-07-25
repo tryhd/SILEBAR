@@ -65,7 +65,7 @@
                     <center>
                         {{-- <a  href="{{ route('kapprove',$row->id) }}"  type="button" class="btn btn-primary btn-sm">Detail Kegiatan</button></a> --}}
                         @if($row->status == 'Tinjau')
-                        <a href="{{ route('kegiatan-konfirmasi',$row->id) }}"  type="button" class="btn btn-primary">Konfirmasi</button></a>
+                        <a href="{{ route('kegiatan.show',$row->id) }}"  type="button" class="btn btn-primary">Konfirmasi</button></a>
                         @else
                        <button class="btn btn-primary" disabled>Konfirmasi</button></a>
                         @endif

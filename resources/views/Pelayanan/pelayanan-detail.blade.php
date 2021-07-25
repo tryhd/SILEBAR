@@ -7,7 +7,7 @@
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
-                <h1 class="fas fa-folder-open"> Pengajuan Pelayanan KTP </h1>
+                <h1 class="fas fa-folder-open"> Konfirmasi Pengajuan Pelayanan {{ $data->jenis_permohonan }}</h1>
             </div>
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
@@ -25,11 +25,59 @@
     <!-- Default box -->
     <div class="card">
         <div class="card-header">
-            <h3 class="card-title">Data Pengajuan Pelayanan KTP </h3>
+            <h3 class="card-title">Detail Pengajuan Pelayanan </h3>
         </div>
         <div class="card-body">
-            <table id="example1" class="table table-bordered table-striped">
+            <table class="table table-bordered table-striped">
                 <thead>
+                    @if ($data->jenis_permohonan=="Pembuatan KK")
+
+                    <tr><td style="text-align:center" colspan="2"><b>Data Suami</b> </td></tr>
+                    @foreach ($suami as $item)
+                    <tr>
+                        <th>Nama Suami</th>
+                        <td>{{ $item->warga->nama}}</td>
+                    </tr>
+                    <tr>
+                        <th>Nama Ayah</th>
+                        <td>{{ $item->ayah}}</td>
+                    </tr>
+                    <tr>
+                        <th>Nama Ibu</th>
+                        <td>{{ $item->ibu}}</td>
+                    </tr>
+                    @endforeach
+                    <tr><td style="text-align:center" colspan="2"><b>Data Istri</b></td></tr>
+                    @foreach ($istri as $item)
+                    <tr>
+                        <th>Nama Istri</th>
+                        <td>{{ $item->warga->nama }}</td>
+                    </tr>
+                    <tr>
+                        <th>Nama Ayah</th>
+                        <td>{{ $item->ayah}}</td>
+                    </tr>
+                    <tr>
+                        <th>Nama Ibu</th>
+                        <td>{{ $item->ibu}}</td>
+                    </tr>
+                    @endforeach
+                    <tr>
+                        <th>Alamat Lengkap</th>
+                        <td>{{ $data->warga->alamat }} RT {{ $data->warga->rt }} RW {{ $data->warga->rw }} Kelurahan {{ $data->warga->Kelurahan->nama_kelurahan }}</td>
+                    </tr>
+                    <tr><td style="text-align:center" colspan="2"><b>Dokumen</b></td></tr>
+                    <tr>
+                        <th>Surat Pengantar</th>
+                        <td><a href="{{ asset('Dokumen/pengantar/'.$data->surat_pengantar) }}" alt="user-image" class="avatar avatar-sm" target="_blank">
+                            {{ $data->surat_pengantar }}</a></td>
+                    </tr>
+                    <tr>
+                        <th>Akta Nikah</th>
+                        <td><a href="{{ asset('Dokumen/akta nikah/'.$data->akta_nikah) }}" alt="user-image" class="avatar avatar-sm" target="_blank">
+                            {{ $data->akta_nikah }}</a></td>
+                    </tr>
+                    @else
                     <tr>
                         <th>Nik</th>
                         <td>{{ $data->warga->nik }}</td>
@@ -59,20 +107,8 @@
                         <td>{{ $data->warga->jenis_kelamin }}</td>
                     </tr>
                     <tr>
-                        <th>Alamat</th>
-                        <td>{{ $data->warga->alamat }}</td>
-                    </tr>
-                    <tr>
-                        <th>RT</th>
-                        <td>{{ $data->warga->rt }}</td>
-                    </tr>
-                    <tr>
-                        <th>RW</th>
-                        <td>{{ $data->warga->rw }}</td>
-                    </tr>
-                    <tr>
-                        <th>Kelurahan</th>
-                        <td>{{ $data->warga->kelurahan }}</td>
+                        <th>Alamat Lengkap</th>
+                        <td>{{ $data->warga->alamat }} RT {{ $data->warga->rt }} RW {{ $data->warga->rw }} Kelurahan {{ $data->warga->Kelurahan->nama_kelurahan }}</td>
                     </tr>
                     <tr>
                         <th>Agama</th>
@@ -98,11 +134,42 @@
                         <th>Kewarganegaraan</th>
                         <td>{{ $data->warga->kewarganegaraan }}</td>
                     </tr>
-            </table>
+                    <tr>
+                        <th>Surat Pengantar</th>
+                        <td><a href="{{ asset('Dokumen/pengantar/'.$data->surat_pengantar) }}" alt="user-image" class="avatar avatar-sm" target="_blank">
+                            {{ $data->surat_pengantar }}</a></td>
+                    </tr>
+                    <tr>
+                        <th>Scan Kartu Keluarga</th>
+                        <td>
+                        <a href="{{ asset('Dokumen/kk/'.$data->kk) }}" alt="user-image" class="avatar avatar-sm" target="_blank">
+                                {{ $data->kk }}</a>
+                        </td>
+                    </tr>
+                    @if ($data->jenis_permohonan=="Perubahan Data KTP" || $data->jenis_permohonan=="KTP Pendatang")
+                    <tr>
+                        <th>Scan KTP Lama</th>
+                        <td>
+                        <a href="{{ asset('Dokumen/ktp/'.$data->ktp) }}" alt="user-image" class="avatar avatar-sm" target="_blank">
+                                {{ $data->ktp }}</a>
+                        </td>
+                    </tr>
+                    @endif
+                    @if ($data->jenis_permohonan=="Kehilangan KTP")
+                    <tr>
+                        <th>Surat Kehilangan</th>
+                        <td>
+                        <a href="{{ asset('Dokumen/kehilangan/'.$data->surat_kehilangan) }}" alt="user-image" class="avatar avatar-sm" target="_blank">
+                                {{ $data->surat_kehilangan }}</a>
+                        </td>
+                    </tr>
+                    @endif
+                    @endif
+
+                </table>
         </div>
-        <!-- /.card-body -->
         <div class="card-footer">
-            Footer
+            <a href="{{ route('pelayanan-konfirmasi',$data->id) }}"  type="button" class="btn btn-primary">Konfirmasi Pelayanan</a>
         </div>
         <!-- /.card-footer-->
     </div>
