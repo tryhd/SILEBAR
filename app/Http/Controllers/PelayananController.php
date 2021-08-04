@@ -39,6 +39,15 @@ class PelayananController extends Controller
                         ->get();
         return view ('Pelayanan.pelayanan-index',compact('data'));
     }
+
+    public function index2()
+    {
+        //
+        $data=Pelayanan::where('status','Diproses')
+                        ->orderby('id','asc')
+                        ->get();
+        return view ('Pelayanan.pelayanan-index',compact('data'));
+    }
     /**
      * Show the form for creating a new resource.
      *

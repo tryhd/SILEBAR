@@ -38,6 +38,7 @@ Route::resource('/user', 'UserController')->middleware('auth');
 //Pelayanan KTP
 //Pengajuan KTP Pemula
 Route::get('/pelayanan-selesai','PelayananController@index1')->name('pel-selesai')->middleware('auth');
+Route::get('/pelayanan-proses','PelayananController@index2')->name('pel-proses')->middleware('auth');
 Route::resource('/pelayanan', 'PelayananController')->middleware('auth');
 route::get('/pelayanan-konfirmasi{id}','PelayananController@Konfirmasi')->name('pelayanan-konfirmasi')->middleware('auth');
 route::get('/AddPemula','PelayananController@PengajuanKTPPemula')->name('ktppemula')->middleware('auth');
@@ -67,6 +68,7 @@ route::Post('hilang{id}','PelayananController@KTPHilangStore')->name('storehilan
 
 //Kegiatan
 Route::get('/kegiatan-posting','KegiatanController@index1')->name('kegi-selesai')->middleware('auth');
+Route::get('/kegiatan-tinjau','KegiatanController@index2')->name('kegi-tinjau')->middleware('auth');
 Route::resource('/kegiatan', 'KegiatanController')->middleware('auth');
 Route::get('/kegiatan-konfirmasi{id}', 'KegiatanController@Konfirmasi')->name('kegiatan-konfirmasi')->middleware('auth');
 Route::get('/posting', 'KegiatanController@posting')->name('postingkegiatan')->middleware('auth');

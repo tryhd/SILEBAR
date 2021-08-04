@@ -35,9 +35,19 @@ class KegiatanController extends Controller
         $data=Kegiatan::where('status','Posting')
                         ->orderby('id','asc')
                         ->get();
-
         return view ('kegiatan.kegiatan-index',compact('data','user'));
     }
+
+    public function index2()
+    {
+        //
+        $user = User::all();
+        $data=Kegiatan::where('status','Tinjau')
+                        ->orderby('id','asc')
+                        ->get();
+        return view ('kegiatan.kegiatan-index',compact('data','user'));
+    }
+
     /**
      * Show the form for creating a new resource.
      *
