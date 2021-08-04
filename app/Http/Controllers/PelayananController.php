@@ -31,6 +31,14 @@ class PelayananController extends Controller
         return view ('Pelayanan.pelayanan-index',compact('data'));
     }
 
+    public function index1()
+    {
+        //
+        $data=Pelayanan::where('status','Selesai')
+                        ->orderby('id','asc')
+                        ->get();
+        return view ('Pelayanan.pelayanan-index',compact('data'));
+    }
     /**
      * Show the form for creating a new resource.
      *
@@ -102,7 +110,6 @@ class PelayananController extends Controller
     {
         //
     }
-
     public function Konfirmasi($id){
         $data=Pelayanan::find($id);
         $data->status='Selesai';

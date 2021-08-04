@@ -24,7 +24,7 @@ class WebController extends Controller
         $data=Kegiatan::where('status','Posting')
         ->orderby('updated_at','desc')
         ->get();
-        //dd($data);
+        // dd($data->User->name);
         return view ('web.kegiatan',compact('data','user','kelurahan'));
     }
 
@@ -34,7 +34,7 @@ class WebController extends Controller
         $data=Kegiatan::where('status','Posting')
         ->orderby('updated_at','desc')
         ->get();
-        //dd($data);
+        // dd();
         return view ('web.pelayanan',compact('data','user','kelurahan'));
     }
 

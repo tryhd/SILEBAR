@@ -185,7 +185,8 @@
                                         </center>
                                     </div>
                                     <div class="meta-post">
-                                        <a href="#" class="author">By<br /> {{$row->user->name}}</a>
+
+                                        <a href="#" class="author">By<br/> {{$row->user->name}}</a>
                                         <a href="#" class="date">Tanggal<br /> {{$row->tanggal}}</a>
                                     </div>
                                     <p>

@@ -169,6 +169,7 @@
                 </table>
         </div>
         <div class="card-footer">
+            <a href="/pelayanan"  type="button" class="btn btn-warning">Kembali</a>
             <a href="{{ route('pelayanan-konfirmasi',$data->id) }}"  type="button" class="btn btn-primary">Konfirmasi Pelayanan</a>
         </div>
         <!-- /.card-footer-->
